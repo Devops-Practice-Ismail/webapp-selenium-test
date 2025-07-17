@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'TEST_URL', defaultValue: 'http://13.56.184.225:8080/student-reg-webapp/', description: 'URL to test')
+        string(name: 'TEST_URL', defaultValue: 'http://13.233.163.72:8080/student-reg-webapp/', description: 'URL to test')
     }
 
     environment {
@@ -19,13 +19,13 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Rushi-Technologies/webapp-selenium-test.git', branch: 'main'
+                git url: 'https://github.com/Devops-Practice-Ismail/webapp-selenium-test.git', branch: 'main'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh  "echo App URLL ${TEST_URL}"
+                sh  "echo App URL ${TEST_URL}"
                 sh "mvn clean test -DTEST_URL=${TEST_URL}"
             }
         }
